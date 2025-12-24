@@ -27,7 +27,7 @@ jobs:
           pip install requests
       
       - name: Fetch and store data
-        run: python scripts/fetch_data.py
+        run: python scripts/fetch-data.py
       
       - name: Commit and push changes
         run: |
