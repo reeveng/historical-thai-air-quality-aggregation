@@ -1,0 +1,2 @@
+station_id,date,time,pm25_aqi,pm25_value,pm10_aqi,pm10_value,o3_aqi,o3_value,co_aqi,co_value,no2_aqi,no2_value,so2_aqi,so2_value,aqi,aqi_param
+17t,2025-10-05,23:00,57,26.5,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,57,PM25

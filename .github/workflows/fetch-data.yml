@@ -2,50 +2,61 @@ name: Fetch Air Quality Data Hourly
 
 on:
   schedule:
-    # Runs every hour at minute 0
+    # Every hour. GitHub delays scheduled runs under load, so the fetcher
+    # deduplicates on (station, date, hour) rather than assuming exact timing.
     - cron: '0 * * * *'
   workflow_dispatch: # Manual trigger button
+
+# A delayed run must not race the next one into a push conflict.
+concurrency:
+  group: fetch-data
+  cancel-in-progress: false
 
 jobs:
   fetch-and-store:
     runs-on: ubuntu-latest
-    
+
     permissions:
       contents: write
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      
+        with:
+          # Only the tip is needed; the full history is large and never read.
+          fetch-depth: 1
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      
+
       - name: Install dependencies
-        run: |
-          pip install requests
-      
+        run: pip install requests
+
       - name: Fetch and store data
         run: python scripts/fetch-data.py
-      
+
       - name: Commit and push changes
         run: |
           git config --local user.email "juicemitapfelndrin@gmail.com"
           git config --local user.name "JMAD"
           git add data/
-          
-          # Check if there are changes to commit
+
           if git diff --staged --quiet; then
             echo "No changes to commit"
-          else
-            git commit -m "📊 Update air quality data - $(date -u +'%Y-%m-%d %H:%M UTC')"
-            git push
+            exit 0
           fi
-      
-      - name: Upload logs as artifact (on failure)
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: error-logs
-          path: logs/
+
+          git commit -m "📊 Update air quality data - $(date -u +'%Y-%m-%d %H:%M UTC')"
+
+          # Rebase onto whatever landed while this run was queued, then retry.
+          for attempt in 1 2 3; do
+            if git push; then
+              exit 0
+            fi
+            echo "Push rejected (attempt $attempt); rebasing on origin/${GITHUB_REF_NAME}"
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
+          done
+          echo "Could not push after 3 attempts"
+          exit 1

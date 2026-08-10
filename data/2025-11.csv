@@ -1,0 +1,3 @@
+station_id,date,time,pm25_aqi,pm25_value,pm10_aqi,pm10_value,o3_aqi,o3_value,co_aqi,co_value,no2_aqi,no2_value,so2_aqi,so2_value,aqi,aqi_param
+29t,2025-11-23,00:00,21,12.4,25,50,-1,-1,-1,-1,-1,-1,-1,-1,25,PM10
+63t,2025-11-24,17:00,11,6.4,-1,-1,-1,-1,-1,-1,-1,-1,-999,-1,11,PM25
