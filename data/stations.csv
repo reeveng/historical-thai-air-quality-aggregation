@@ -43,7 +43,7 @@ station_id,name_th,name_en,area_th,area_en,station_type,lat,long
 29t,โรงพยาบาลส่งเสริมสุขภาพตำบลมาบตาพุด ,Health Promotion Hospital Maptaput,"ต.มาบตาพุด อ.เมือง, ระยอง","Map Ta Phut, Meuang, Rayong",GROUND,12.70865,101.1659833
 30t,สนามกีฬากลางจังหวัดระยอง,Rayong Provincial Stadium,"สนามกีฬากลางจังหวัดระยอง ต.เนินพระ อ.เมือง, ระยอง"," Noen Phra, Muang Rayong, Rayong",GROUND,12.678917,101.234664
 31t,ศูนย์วิจัยพืชไร่ระยอง ,"Field Crop Research Center, Rayong","ต.ห้วยโป่ง อ.เมือง, ระยอง","Huai Pong, Meuang, Rayong",GROUND,12.73518333,101.13565
-32t,สนามกีฬาเทศบาลแหลมฉบัง ,Laem Chabang Municipal Stadium,"ต.ทุ่งสุขลา อ.ศรีราชา, ชลบุรี","Thung Sukhla, Si Racha, Chon buri",GROUND,13.11923333,100.91855
+32t,โรงเรียนชุมชนบ้านปาดังเบซาร์,Chumchon Banpadang School,"ต.ปาดังเบซาร์ อ.สะเดา, จ.สงขลา","Padangbesa, Sadao District, Songkhla",MOBILE,6.66638438023621,100.32726914385205
 33t,โรงพยาบาลส่งเสริมสุขภาพตำบลบ้านเขาหิน,Health Promotion Hospital Bankhaohin,"ต.บ่อวิน อ.ศรีราชา, ชลบุรี","Bo Win, Si Racha, Chon buri",GROUND,13.054551,101.098128
 34t,สำนักงานสิ่งแวดล้อมภาคที่ 13 ,"Environment Agency Section 13, Chonburi","ต.บ้านสวน อ.เมือง, ชลบุรี","Ban Suan, Mueang, Chon Buri",GROUND,13.35461667,100.9792167
 35t,ศูนย์ราชการจังหวัดเชียงใหม่ ,"City Hall, Chiangmai","ต.ช้างเผือก อ.เมือง, เชียงใหม่","Chang Phueak, Meuang, Chiang Mai",GROUND,18.840732,98.96978
@@ -181,7 +181,8 @@ o28,โรงเรียนชุมชนบ้านปาดังเบซ�
 o29,สำนักงานเทศบาลเมืองระนอง,Ranong Municipal office,"ต.เขานิเวศน์  อ.เมือง, ระนอง","Mueang District, Ranong",MOBILE,9.961849,98.639341
 o38,ค่ายสุรสิงหนาท,Khai Surasinghanat,"ต.ตะพง อ.เมือง, ระยอง","Taphong, Mueang, Rayong",MOBILE,12.648576,101.32245
 o59,ศูนย์ราชการจังหวัดพังงา,Phangnga Provincial Government Center,"ต.ถ้ำน้ำผุด อ.เมือง, พังงา","Mueang, Phangnga",MOBILE,8.424964,98.528719
-o61,อุทยานแห่งชาติเอราวัณ,Erawan National Park,"ต.ท่ากระดาน อ.ศรีสวัสดิ์, กาญจนบุรี","Tha Kradan, Si Sawat District, Kanchanaburi",MOBILE,14.374830537949412,99.14523682440188
+o61,สนามกีฬาเทศบาลแหลมฉบัง ,Laem Chabang Municipal Stadium,"ต.ทุ่งสุขลา อ.ศรีราชา, ชลบุรี","Thung Sukhla, Si Racha, Chon buri",GROUND,13.11923333,100.91855
+o63,ค่ายสุรสิงหนาท,Khai Surasinghanat,"ต.ตะพง อ.เมือง, ระยอง","Taphong, Mueang, Rayong",MOBILE,12.648576,101.32245
 o65,ศูนย์พัฒนาเด็กเล็กวัดทองทรงธรรม,Wat Thong Song Tham Child Development Center,"ต.คลองสะแก, อ.นครหลวง, พระนครศรีอยุธยา","Khlong Sakae, Phra Nakhon Si Ayutthaya",MOBILE,14.420548,100.595312
 o66,ศูนย์ป้องกันและบรรเทาสาธารณภัยเทศบาลตำบลเวียง,Wiang Subdistrict Disaster Prevention and Mitigation Center,"ต.เวียง อ.เชียงของ, เชียงราย","Wiang Subdistrict, Chiang Khong District, Chiang Rai",MOBILE,20.2575,100.4025
 o67,โรงเรียนเสาไห้ (วิมลวิทยานุกูล),(Saohai Wimolwitthayanukul School.),"ต.เสาไห้ อ.เสาไห้, สระบุรี","Sao Hai, Sao Hai District, Saraburi",MOBILE,14.547922866744255,100.85647317791022
