@@ -21,18 +21,20 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           # Only the tip is needed; the full history is large and never read.
           fetch-depth: 1
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: '3.11'
 
+      # certifi is already a requests dependency, but the fetcher reads it
+      # directly to build a CA bundle, so it is named here too.
       - name: Install dependencies
-        run: pip install requests
+        run: pip install requests certifi
 
       - name: Fetch and store data
         run: python scripts/fetch-data.py

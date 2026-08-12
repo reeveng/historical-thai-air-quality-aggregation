@@ -5,10 +5,13 @@ nothing when the upstream reading has not advanced. Only the rows that are new
 hit the diff, which is what keeps the repo small.
 """
 
+import atexit
 import sys
+import tempfile
 from collections import defaultdict
 from pathlib import Path
 
+import certifi
 import requests
 
 sys.path.insert(0, str(Path(__file__).parent))
@@ -25,11 +28,27 @@ from aq_common import (  # noqa: E402
     write_csv,
 )
 
-API_URL = "http://air4thai.com/forweb/getAQI_JSON.php"
+API_URL = "https://air4thai.com/forweb/getAQI_JSON.php"
+
+# air4thai's leaf is issued by Let's Encrypt YR1, but the server ships unrelated
+# Sectigo intermediates, so verification fails everywhere. CHAIN_PEM supplies the
+# missing links; unioning it with certifi restores a full path to a trusted root
+# rather than weakening the check. Both stay inert once the server is fixed.
+CHAIN_PEM = Path(__file__).parent / "air4thai-chain.pem"
+
+
+def ca_bundle():
+    """certifi's roots plus the intermediates air4thai declines to serve."""
+    with tempfile.NamedTemporaryFile("w", suffix=".pem", delete=False) as f:
+        f.write(Path(certifi.where()).read_text(encoding="utf-8"))
+        f.write("\n")
+        f.write(CHAIN_PEM.read_text(encoding="utf-8"))
+    atexit.register(lambda: Path(f.name).unlink(missing_ok=True))
+    return f.name
 
 
 def main():
-    response = requests.get(API_URL, timeout=30)
+    response = requests.get(API_URL, timeout=30, verify=ca_bundle())
     response.raise_for_status()
     payload = response.json()
 
